@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+
+# Block admin and internal areas
+Disallow: /admin/
+Disallow: /api/
+Disallow: /dev/
+
+# Allow all search engines to crawl flight and hotel pages
+Allow: /flights*
+Allow: /hotels*
+Allow: /cheap-flights*
+Allow: /flights-from*
+Allow: /flights-to*
+
+Sitemap: https://travalsearch.com/sitemap.xml

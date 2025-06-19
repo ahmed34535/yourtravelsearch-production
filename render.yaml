@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: yourtravelsearch-production
+    env: node
+    plan: starter
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: DUFFEL_API_TOKEN
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+    healthCheckPath: /api/health
+    autoDeploy: true
+    repo: https://github.com/ahmed34535/yourtravelsearch-production
+    branch: main
+
+databases:
+  - name: yourtravelsearch-db
+    databaseName: yourtravelsearch
+    user: yourtravelsearch_user
+    plan: starter
