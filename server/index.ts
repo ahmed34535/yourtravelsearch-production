@@ -2,16 +2,7 @@ import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
 
-// Load environment variables
-import fs from "fs";
-import path from "path";
-
-try {
 // Environment variables provided by Render
-  });
-} catch (error) {
-  // .env file doesn't exist or can't be read
-}
 
 const app = express();
 app.use(express.json());
