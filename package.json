@@ -1,12 +1,9 @@
 {
   "name": "yourtravelsearch",
   "version": "1.0.0",
-  "license": "MIT",
+  "main": "main.js",
   "scripts": {
-    "start": "node app.js"
-  },
-  "engines": {
-    "node": ">=18.0.0"
+    "start": "node main.js"
   },
   "dependencies": {
     "express": "^4.18.2"
