@@ -7,13 +7,7 @@ import fs from "fs";
 import path from "path";
 
 try {
-  const envFile = fs.readFileSync(path.join(process.cwd(), '.env'), 'utf8');
-  const envLines = envFile.split('\n').filter(line => line.includes('='));
-  envLines.forEach(line => {
-    const [key, value] = line.split('=');
-    if (key && value) {
-      process.env[key.trim()] = value.trim();
-    }
+// Environment variables provided by Render
   });
 } catch (error) {
   // .env file doesn't exist or can't be read
