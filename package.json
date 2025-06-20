@@ -3,34 +3,32 @@
   "version": "1.0.0",
   "type": "module",
   "engines": {
-    "node": ">=20.0.0"
+    "node": "20"
   },
   "scripts": {
-    "build": "vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
+    "dev": "NODE_ENV=development tsx server/index.ts",
+    "build": "cd client && vite build && cd .. && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
     "start": "node dist/index.js"
   },
   "dependencies": {
-    "express": "^4.21.1",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "@radix-ui/react-slot": "^1.1.0",
-    "@tanstack/react-query": "^5.59.8",
-    "wouter": "^3.3.5",
-    "lucide-react": "^0.460.0",
-    "tailwindcss": "^3.4.14",
-    "drizzle-orm": "^0.36.3",
-    "zod": "^3.23.8",
-    "axios": "^1.7.8",
-    "clsx": "^2.1.1",
-    "@neondatabase/serverless": "^0.10.4",
-    "vite": "^5.4.14",
-    "esbuild": "^0.24.0",
-    "@vitejs/plugin-react": "^4.3.3",
-    "typescript": "^5.6.3",
-    "autoprefixer": "^10.4.20",
-    "postcss": "^8.5.0"
-  }
-}
-    "tsx": "^4.19.2"
+    "express": "4.21.1",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "@radix-ui/react-slot": "1.1.0",
+    "@tanstack/react-query": "5.59.8",
+    "wouter": "3.3.5",
+    "lucide-react": "0.460.0",
+    "tailwindcss": "3.4.14",
+    "drizzle-orm": "0.36.3",
+    "zod": "3.23.8",
+    "axios": "1.7.8",
+    "clsx": "2.1.1",
+    "@neondatabase/serverless": "0.10.4",
+    "vite": "5.4.14",
+    "esbuild": "0.24.0",
+    "@vitejs/plugin-react": "4.3.3",
+    "typescript": "5.6.3",
+    "autoprefixer": "10.4.20",
+    "postcss": "8.5.0"
   }
 }
