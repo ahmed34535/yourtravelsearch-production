@@ -17,6 +17,7 @@ import { z } from "zod";
 import { createFlightService, FlightSearchSchema, BookingSchema, calculateFinalPrice, DuffelClient } from "./duffel";
 import { generateAIResponse, generateQuickResponses } from "./aiChat";
 import { currencyService } from "./currencyService";
+// Environment variables provided by Render - no validation crashes
 import { seoAnalytics } from "./seoAnalytics";
 import { customSEO } from "./customSEOIntelligence";
 import { godaddyService } from "./godaddyApiService";
@@ -955,12 +956,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const { location, check_in, check_out, guests } = req.query;
       
-      if (!process.env.DUFFEL_API_TOKEN) {
-        return res.status(501).json({ 
-          message: "Hotel booking API integration required",
-          options: ["Duffel Stays API", "Booking.com Partner API", "Expedia API", "Amadeus Hotel API"],
-          note: "Platform uses only live APIs - no mock data available"
-        });
       }
 
       // Default search parameters
@@ -1039,11 +1034,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const { id } = req.params;
       
-      if (!process.env.DUFFEL_API_TOKEN) {
-        return res.status(501).json({ 
-          message: "Duffel API token required for hotel details",
-          note: "Add DUFFEL_API_TOKEN to enable authentic hotel data"
-        });
       }
 
       console.log(`[Duffel Stays] Fetching hotel details for ID: ${id}`);
@@ -2936,11 +2926,6 @@ The direct vs. connecting decision isn't just about money—it's about value. By
   // Duffel Payment Processing API Routes
   app.post("/api/payment/create-intent", async (req, res) => {
     try {
-      if (!process.env.DUFFEL_API_TOKEN) {
-        return res.status(501).json({ 
-          message: "Payment processing requires Duffel API integration. Please configure DUFFEL_API_TOKEN to enable live payment processing.",
-          error: "API_KEY_REQUIRED"
-        });
       }
 
       const { amount, currency = "USD" } = req.body;
@@ -2983,11 +2968,6 @@ The direct vs. connecting decision isn't just about money—it's about value. By
 
   app.post("/api/payment/create-method", async (req, res) => {
     try {
-      if (!process.env.DUFFEL_API_TOKEN) {
-        return res.status(501).json({ 
-          message: "Payment processing requires Duffel API integration. Please configure DUFFEL_API_TOKEN to enable live payment processing.",
-          error: "API_KEY_REQUIRED"
-        });
       }
 
       const { cardData, billingDetails } = req.body;
@@ -3029,11 +3009,6 @@ The direct vs. connecting decision isn't just about money—it's about value. By
 
   app.post("/api/booking/complete-payment", async (req, res) => {
     try {
-      if (!process.env.DUFFEL_API_TOKEN) {
-        return res.status(501).json({ 
-          message: "Payment processing requires Duffel API integration. Please configure DUFFEL_API_TOKEN to enable live payment processing.",
-          error: "API_KEY_REQUIRED"
-        });
       }
 
       const { offerId, passengers, cardData, billingDetails, amount, currency } = req.body;
